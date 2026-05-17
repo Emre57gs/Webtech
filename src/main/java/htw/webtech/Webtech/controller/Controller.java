@@ -1,14 +1,25 @@
 package htw.webtech.Webtech.controller;
 
-import htw.webtech.Webtech.model.CardDTO;
-import htw.webtech.Webtech.service.CardService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 
-@RestController
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
+import htw.webtech.Webtech.model.CardDTO;
+import htw.webtech.Webtech.model.CardRequest;
+import htw.webtech.Webtech.model.DeckDTO;
+import htw.webtech.Webtech.model.DeckRequest;
+import htw.webtech.Webtech.service.CardService;
+
+@RestController
+@RequestMapping("/api")
 public class Controller {
 
     private final CardService cardService;
@@ -17,9 +28,31 @@ public class Controller {
         this.cardService = cardService;
     }
 
-    @GetMapping("/test")
-    public List<CardDTO> getCards() {
+    @GetMapping("/decks")
+    public List<DeckDTO> getAllDecks() {
+        return cardService.getAllDecks();
+    }
 
-        return cardService.getAllCards();
+    @PostMapping("/decks")
+    @ResponseStatus(HttpStatus.CREATED)
+    public DeckDTO createDeck(@RequestBody DeckRequest request) {
+        return cardService.createDeck(request);
+    }
+
+    @DeleteMapping("/decks/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteDeck(@PathVariable Long id) {
+        cardService.deleteDeck(id);
+    }
+
+    @GetMapping("/decks/{id}/cards")
+    public List<CardDTO> getCards(@PathVariable Long id) {
+        return cardService.getCardsByDeck(id);
+    }
+
+    @PostMapping("/decks/{id}/cards")
+    @ResponseStatus(HttpStatus.CREATED)
+    public CardDTO createCard(@PathVariable Long id, @RequestBody CardRequest request) {
+        return cardService.createCard(id, request);
     }
 }
