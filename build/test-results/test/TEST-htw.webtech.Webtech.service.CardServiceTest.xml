@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="htw.webtech.Webtech.service.CardServiceTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-06-15T11:28:29.300Z" hostname="LAPTOP-TEOHRO03" time="0.271">
+  <properties/>
+  <testcase name="createDeck_savesAndReturnsMappedDTO()" classname="htw.webtech.Webtech.service.CardServiceTest" time="0.236"/>
+  <testcase name="getAllDecks_returnsEmptyList_whenNoDecksExist()" classname="htw.webtech.Webtech.service.CardServiceTest" time="0.014"/>
+  <testcase name="getCardsByDeck_returnsEmptyList_whenNoCardsExist()" classname="htw.webtech.Webtech.service.CardServiceTest" time="0.002"/>
+  <testcase name="createCard_savesCardUnderCorrectDeck()" classname="htw.webtech.Webtech.service.CardServiceTest" time="0.002"/>
+  <testcase name="getAllDecks_returnsMappedDTOs()" classname="htw.webtech.Webtech.service.CardServiceTest" time="0.003"/>
+  <testcase name="createCard_throwsWhenDeckNotFound()" classname="htw.webtech.Webtech.service.CardServiceTest" time="0.008"/>
+  <testcase name="getCardsByDeck_returnsMappedDTOs()" classname="htw.webtech.Webtech.service.CardServiceTest" time="0.001"/>
+  <testcase name="deleteDeck_callsRepository()" classname="htw.webtech.Webtech.service.CardServiceTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
