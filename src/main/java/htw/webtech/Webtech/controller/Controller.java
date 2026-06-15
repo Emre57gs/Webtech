@@ -17,6 +17,7 @@ import htw.webtech.Webtech.model.CardRequest;
 import htw.webtech.Webtech.model.DeckDTO;
 import htw.webtech.Webtech.model.DeckRequest;
 import htw.webtech.Webtech.service.CardService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
@@ -35,7 +36,7 @@ public class Controller {
 
     @PostMapping("/decks")
     @ResponseStatus(HttpStatus.CREATED)
-    public DeckDTO createDeck(@RequestBody DeckRequest request) {
+    public DeckDTO createDeck(@Valid @RequestBody DeckRequest request) {
         return cardService.createDeck(request);
     }
 
@@ -52,7 +53,7 @@ public class Controller {
 
     @PostMapping("/decks/{id}/cards")
     @ResponseStatus(HttpStatus.CREATED)
-    public CardDTO createCard(@PathVariable Long id, @RequestBody CardRequest request) {
+    public CardDTO createCard(@PathVariable Long id, @Valid @RequestBody CardRequest request) {
         return cardService.createCard(id, request);
     }
 }

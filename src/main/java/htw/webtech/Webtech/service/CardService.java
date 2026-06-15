@@ -2,7 +2,9 @@ package htw.webtech.Webtech.service;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import htw.webtech.Webtech.model.Card;
 import htw.webtech.Webtech.model.CardDTO;
@@ -50,7 +52,7 @@ public class CardService {
 
     public CardDTO createCard(Long deckId, CardRequest request) {
         Deck deck = deckRepository.findById(deckId)
-                .orElseThrow(() -> new RuntimeException("Deck nicht gefunden"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Deck nicht gefunden"));
         Card card = new Card();
         card.setQuestion(request.question());
         card.setAnswer(request.answer());
