@@ -24,7 +24,7 @@ import jakarta.validation.Valid;
 public class Controller {
 
     private final CardService cardService;
-
+    // decks/{id}/cards Pavel Kom
     public Controller(CardService cardService) {
         this.cardService = cardService;
     }
@@ -37,6 +37,7 @@ public class Controller {
     @PostMapping("/decks")
     @ResponseStatus(HttpStatus.CREATED)
     public DeckDTO createDeck(@Valid @RequestBody DeckRequest request) {
+        // logger.info("Ein Deckmit den Ttitel " + request.title()  "wurde erstellt") Pavel Kom
         return cardService.createDeck(request);
     }
 
